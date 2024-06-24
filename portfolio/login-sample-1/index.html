@@ -1,54 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <!-- Include Tailwind CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="../../assets/css/portfolio-style.css" rel="stylesheet">
-</head>
-<body class="bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
-    <!-- Header -->
-    <header class="bg-white shadow-md dark:bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Your App Name</h1>
-            <button id="toggleDarkMode" title="dark mode" class="bg-gray-300 text-white p-2 py-1 rounded">
-                🌙
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex items-center justify-center py-20">
-        <div class="card-login p-8 rounded shadow-md max-w-md w-full">
-            <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
-            <form>
-                <div class="mb-4">
-                    <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login Page</title>
+        <!-- Include Tailwind CSS -->
+        <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+        <link href="../../assets/css/portfolio-style.css" rel="stylesheet" />
+    </head>
+    <body class="bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+        <!-- Header -->
+        <header class="bg-white shadow-md dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+                <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Your App Name</h1>
+                <div class="flex items-center space-x-4">
+                    <a href="../" target="_self" title="home" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
+                        <span>🏠</span>
+                    </a>
+                    <button id="toggleDarkMode" title="dark mode" class="bg-gray-300 text-white p-2 py-1 rounded">🌙</button>
                 </div>
-                <div class="mb-6">
-                    <label for="password" class="block text-sm font-medium text-gray-700 text-white">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex items-center justify-center py-20 px-4">
+            <div class="card-login p-8 rounded shadow-md max-w-md w-full">
+                <div id="loginSection">
+                    <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
+                    <form>
+                        <div class="mb-4">
+                            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <div class="mb-6">
+                            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 animated-button">Login</button>
+                    </form>
+                    <div class="mt-4 text-sm text-center"><a href="#" id="showRegisterForm" class="text-indigo-500 hover:text-indigo-700">Create an account</a> · <a href="#" id="showForgotPasswordForm" class="text-indigo-500 hover:text-indigo-700">Forgot password?</a></div>
                 </div>
-                <button type="submit" class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 animated-button">Login</button>
-            </form>
-            <div class="mt-4 text-sm text-center"><a href="#" class="text-indigo-500 hover:text-indigo-700">Forgot password?</a> · <a href="#" class="text-indigo-500 hover:text-indigo-700">Create an account</a></div>
-        </div>
-    </main>
+                <div id="registerSection" style="display: none">
+                    <h2 class="text-2xl font-semibold mb-6 text-center">Register</h2>
+                    <form id="registrationForm">
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="hint" class="block text-sm font-medium text-gray-700">Password Hint</label>
+                            <input type="text" id="hint" name="hint" placeholder="Enter a hint to remember your password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="answer" class="block text-sm font-medium text-gray-700">Hint Answer</label>
+                            <input type="text" id="answer" name="answer" placeholder="Enter the answer to your hint" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <div class="mb-4 flex items-start">
+                            <input type="checkbox" id="terms" name="terms" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+                            <label for="terms" class="ml-2 block text-sm text-gray-900">I agree to the <a href="#" class="text-indigo-500 hover:text-indigo-700">Terms and Conditions</a></label>
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 animated-button">Register</button>
+                    </form>
+                    <div class="mt-4 text-sm text-center">
+                        <a href="#" id="showLoginForm" class="text-indigo-500 hover:text-indigo-700">Back to Login</a>
+                    </div>
+                </div>
+                <div id="forgotPasswordSection" style="display: none">
+                    <h2 class="text-2xl font-semibold mb-6 text-center">Forgot Password?</h2>
+                    <form id="forgotPasswordForm">
+                        <div class="mb-4">
+                            <label for="emailForgot" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="emailForgot" name="emailForgot" placeholder="Enter your email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="hintForgot" class="block text-sm font-medium text-gray-700">Password Hint</label>
+                            <input type="text" id="hintForgot" name="hintForgot" placeholder="Enter the hint you set for your password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <div class="mb-4">
+                            <label for="answerForgot" class="block text-sm font-medium text-gray-700">Hint Answer</label>
+                            <input type="text" id="answerForgot" name="answerForgot" placeholder="Enter the answer to your hint" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm animated-button" />
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 animated-button">Reset Password</button>
+                    </form>
+                    <div class="mt-4 text-sm text-center">
+                        <a href="#" id="showLoginFormForgot" class="text-indigo-500 hover:text-indigo-700">Back to Login</a>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-    <!-- Footer -->
-    <footer class="bg-white shadow-md dark:bg-gray-900 footer">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <p class="text-sm text-gray-600 dark:text-gray-100 text-center">&copy; 2024 Your App. All rights reserved.</p>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer class="bg-white shadow-md dark:bg-gray-900 footer">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <p class="text-sm text-gray-600 dark:text-gray-100 text-center">&copy; 2024 Your App. All rights reserved.</p>
+            </div>
+        </footer>
 
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Include custom JavaScript for dark mode -->
-    <script src="../../assets/js/darkmode-portfolio.js"></script>
-</body>
+        <!-- Include jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../../assets/js/darkmode-portfolio.js"></script>
+        <script src="../../assets/js/validate-form.js"></script>
+    </body>
 </html>
