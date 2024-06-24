@@ -1,23 +1,36 @@
+/* portfolio-style.css */
+
+/* Default light mode styles */
 body {
     background-color: #ffffff;
     font-family: 'Tilt Neon', sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
+
 header, footer {
     background-color: #f3f4f6;
 }
+
 .card {
     background-color: #f3f4f6;
     transition: background-color 0.3s, transform 0.3s;
 }
+
+.card-login {
+    background-color: #f3f4f6;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
 .card:hover {
     transform: scale(1.05);
 }
+
 .card a {
     display: block;
     color: inherit;
     text-decoration: none;
 }
+
 .info-modal {
     display: none;
     position: fixed;
@@ -29,8 +42,9 @@ header, footer {
     z-index: 999;
     overflow: auto;
     padding-top: 50px;
-    transition: background-color 0.3s ease; /* transisi latar belakang modal */
+    transition: background-color 0.3s ease;
 }
+
 .info-content {
     background-color: #fff;
     max-width: 80%;
@@ -40,25 +54,9 @@ header, footer {
     text-align: center;
     color: #333;
     position: relative;
-    transition: background-color 0.3s ease, color 0.3s ease; /* transisi latar belakang dan teks */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-.dark-mode {
-    background-color: #2d3748;
-    color: #a0aec0;
-}
-.dark-mode header, .dark-mode footer, .dark-mode .card {
-    background-color: #1a202c;
-}
-.dark-mode h1, .dark-mode footer {
-    color: #f3f4f6;
-}
-.dark-mode .info-modal {
-    background-color: rgba(0, 0, 0, 0.5); /* latar belakang hitam saat dark mode aktif */
-}
-.dark-mode .info-content {
-    background-color: #1a202c; /* latar belakang gelap saat dark mode aktif */
-    color: #a0aec0; /* warna teks putih atau sesuai dengan dark mode */
-}
+
 .close-modal {
     position: absolute;
     top: 10px;
@@ -67,12 +65,15 @@ header, footer {
     color: #333;
     font-size: 20px;
 }
+
 .close-modal:hover {
     color: #000;
 }
+
 .info-buttons {
     margin-top: 20px;
 }
+
 .info-buttons a {
     display: inline-block;
     margin: 0 10px;
@@ -82,12 +83,38 @@ header, footer {
     color: #fff;
     text-decoration: none;
 }
+
 .info-buttons a:hover {
     background-color: #357dbf;
 }
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #2d3748;
+    color: #a0aec0;
+}
+
+.dark-mode header, .dark-mode footer, .dark-mode .card, .dark-mode .card-login {
+    background-color: #1a202c;
+}
+
+.dark-mode h1, .dark-mode footer, .dark-mode label, .dark-mode h2{
+    color: #f3f4f6;
+}
+
+.dark-mode .info-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .info-content {
+    background-color: #1a202c;
+    color: #a0aec0;
+}
+
 .info-buttons.dark-mode a {
     background-color: #718096;
 }
+
 .info-buttons.dark-mode a:hover {
     background-color: #4a5568;
 }

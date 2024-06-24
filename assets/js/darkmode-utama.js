@@ -22,11 +22,9 @@ $(document).ready(function() {
         if (theme === 'dark') {
             $('body').removeClass('light-mode').addClass('dark-mode');
             $('#toggleDarkMode').text('🌞');
-            $('#dark-mode-toggle').text('🌞');
         } else {
             $('body').removeClass('dark-mode').addClass('light-mode');
             $('#toggleDarkMode').text('🌙');
-            $('#dark-mode-toggle').text('🌙');
         }
     }
 
@@ -36,7 +34,7 @@ $(document).ready(function() {
         localStorage.setItem('theme', currentMode);
     }
 
-    $('#toggleDarkMode, #dark-mode-toggle').click(function() {
+    $('#toggleDarkMode').click(function() {
         const currentMode = $('body').hasClass('dark-mode') ? 'light' : 'dark';
         setTheme(currentMode);
         localStorage.setItem('theme', currentMode);
@@ -50,12 +48,4 @@ $(document).ready(function() {
         setTheme('dark');
         localStorage.setItem('theme', 'dark');
     }
-
-    $('#info-button').click(function() {
-        $('#info-modal').fadeIn();
-    });
-
-    $('.close-modal').click(function() {
-        $('#info-modal').fadeOut();
-    });
 });
