@@ -9,7 +9,7 @@ $(document).ready(function() {
         const disabledClass = link.disabled ? 'pointer-events-none opacity-50' : '';
         const linkUrl = link.disabled ? '#' : link.url;
         $('#links').append(`
-            <a href="${linkUrl}" ${link.disabled ? 'disabled' : ''} target="${link.target}" id="${link.id}" data-pjax="true" rel="noopener noreferrer" class="block link-card p-4 rounded-lg shadow-md ${disabledClass}">
+            <a href="${linkUrl}" ${link.disabled ? 'disabled' : ''} target="${link.target}" id="${link.id}" data-barba="wrapper" data-barba-prevent="self" rel="noopener noreferrer" class="block link-card p-4 rounded-lg shadow-md ${disabledClass}">
                 <div class="flex items-center">
                     <span class="text-2xl mr-4"><i class="${link.icon}"></i></span>
                     <span class="text-lg font-medium">${link.text}</span>
@@ -18,74 +18,8 @@ $(document).ready(function() {
         `);
     });
 
-    function setTheme(theme) {
-        if (theme === 'dark') {
-            $('body').removeClass('light-mode').addClass('dark-mode');
-            $('#toggleDarkMode').text('🌞');
-            $('#dark-mode-toggle').text('🌞');
-        } else {
-            $('body').removeClass('dark-mode').addClass('light-mode');
-            $('#toggleDarkMode').text('🌙');
-            $('#dark-mode-toggle').text('🌙');
-        }
-    }
-
-    function syncTheme() {
-        const currentMode = $('body').hasClass('dark-mode') ? 'dark' : 'light';
-        setTheme(currentMode);
-        localStorage.setItem('theme', currentMode);
-    }
-
-    $('#toggleDarkMode, #dark-mode-toggle').click(function() {
-        const currentMode = $('body').hasClass('dark-mode') ? 'light' : 'dark';
-        setTheme(currentMode);
-        localStorage.setItem('theme', currentMode);
-        syncTheme();
+    // Memuat barba-init.js sebagai dependensi
+    $.getScript('loader.js', function() {
+        console.log('loader.js loaded');
     });
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-        localStorage.setItem('theme', 'dark');
-    }
-
-    $('#info-button').click(function() {
-        $('#info-modal').fadeIn();
-    });
-
-    $('.close-modal').click(function() {
-        $('#info-modal').fadeOut();
-    });
-
-    // Inisialisasi Pjax
-    $(document).pjax('a[data-pjax]', '#content');
-
-    // Event handler untuk Pjax complete
-    $(document).on('pjax:complete', function() {
-        // Panggil kembali bindEvents atau fungsi lainnya jika perlu
-        bindEvents();
-    });
-
-    // Bind ulang semua event yang diperlukan setelah mengganti isi halaman
-    function bindEvents() {
-        $('#toggleDarkMode, #dark-mode-toggle').click(function() {
-            const currentMode = $('body').hasClass('dark-mode') ? 'light' : 'dark';
-            setTheme(currentMode);
-            localStorage.setItem('theme', currentMode);
-            syncTheme();
-        });
-
-        $('#info-button').click(function() {
-            $('#info-modal').fadeIn();
-        });
-
-        $('.close-modal').click(function() {
-            $('#info-modal').fadeOut();
-        });
-    }
-
-    // Initial bind events
-    bindEvents();
 });
