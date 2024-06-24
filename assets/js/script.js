@@ -17,9 +17,4 @@ $(document).ready(function() {
             </a>
         `);
     });
-
-    // Memuat barba-init.js sebagai dependensi
-    $.getScript('loader.js', function() {
-        console.log('loader.js loaded');
-    });
 });
