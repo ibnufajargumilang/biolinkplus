@@ -1,15 +1,15 @@
 $(document).ready(function() {
     const links = [
-        { url: 'https://www.diwisata.my.id/', text: 'Blog', target:'_blank', icon: 'fas fa-globe', disabled: false },
-        { url: 'https://api.whatsapp.com/send/?phone=6281939703518&text=Hallo,%20Ka%20Ibnu%20Fajar', text: 'Contact WA', target:'_blank', icon: 'fab fa-whatsapp', disabled: false },
-        { url: 'portfolio', text: 'Portofolio', target:'_self', icon: 'fas fa-book', disabled: false }
+        { url: 'https://www.diwisata.my.id/', text: 'Blog', target: '_blank', id: 'linkone', icon: 'fas fa-globe', disabled: false },
+        { url: 'https://api.whatsapp.com/send/?phone=6281939703518&text=Hallo,%20Ka%20Ibnu%20Fajar', text: 'Contact WA', target: '_blank', id: 'linktwo', icon: 'fab fa-whatsapp', disabled: false },
+        { url: 'portfolio/index.html', text: 'Portofolio', target: '_self', id: 'linktree', icon: 'fas fa-book', disabled: false }
     ];
 
     links.forEach(link => {
         const disabledClass = link.disabled ? 'pointer-events-none opacity-50' : '';
         const linkUrl = link.disabled ? '#' : link.url;
         $('#links').append(`
-            <a href="${linkUrl}" ${link.disabled ? 'disabled' : ''} target="${link.target}" rel="noopener noreferrer" class="block link-card p-4 rounded-lg shadow-md ${disabledClass}">
+            <a href="${linkUrl}" ${link.disabled ? 'disabled' : ''} target="${link.target}" id="${link.id}" data-pjax="true" rel="noopener noreferrer" class="block link-card p-4 rounded-lg shadow-md ${disabledClass}">
                 <div class="flex items-center">
                     <span class="text-2xl mr-4"><i class="${link.icon}"></i></span>
                     <span class="text-lg font-medium">${link.text}</span>
@@ -58,4 +58,34 @@ $(document).ready(function() {
     $('.close-modal').click(function() {
         $('#info-modal').fadeOut();
     });
+
+    // Inisialisasi Pjax
+    $(document).pjax('a[data-pjax]', '#content');
+
+    // Event handler untuk Pjax complete
+    $(document).on('pjax:complete', function() {
+        // Panggil kembali bindEvents atau fungsi lainnya jika perlu
+        bindEvents();
+    });
+
+    // Bind ulang semua event yang diperlukan setelah mengganti isi halaman
+    function bindEvents() {
+        $('#toggleDarkMode, #dark-mode-toggle').click(function() {
+            const currentMode = $('body').hasClass('dark-mode') ? 'light' : 'dark';
+            setTheme(currentMode);
+            localStorage.setItem('theme', currentMode);
+            syncTheme();
+        });
+
+        $('#info-button').click(function() {
+            $('#info-modal').fadeIn();
+        });
+
+        $('.close-modal').click(function() {
+            $('#info-modal').fadeOut();
+        });
+    }
+
+    // Initial bind events
+    bindEvents();
 });
