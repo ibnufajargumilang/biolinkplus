@@ -1,0 +1,47 @@
+body {
+    font-family: 'Tilt Neon', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+.link-card, .social-icon {
+    transition: transform 0.3s ease-in-out, background-color 0.3s, color 0.3s;
+}
+.link-card:hover, .social-icon:hover {
+    transform: translateY(-5px);
+}
+.dark-mode {
+    background-color: #1a202c;
+    color: #ffffff;
+}
+.dark-mode .link-card, .dark-mode .social-icon {
+    background-color: #2d3748;
+    color: #ffffff;
+}
+.dark-mode .link-card:hover, .dark-mode .social-icon:hover {
+    background-color: #4a5568;
+}
+.light-mode {
+    background-color: #f3f4f6; /* Warna latar belakang utama pada tema terang */
+    color: #1a202c;
+}
+.link-card {
+    background-color: #ffffff; /* Warna latar belakang daftar tautan */
+    color: #1a202c;
+}
+.link-card:hover {
+    background-color: #edf2f7; /* Warna latar belakang saat daftar tautan dihover */
+}
+.social-icon {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    margin: 0 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #e5e7eb; /* Warna latar belakang ikon sosial media */
+    color: #1a202c;
+}
+.social-icon:hover {
+    background-color: #d1d5db; /* Warna latar belakang ikon sosial media saat dihover */
+}
