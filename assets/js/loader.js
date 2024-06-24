@@ -2,12 +2,12 @@ $(document).ready(function() {
     function setTheme(theme) {
         if (theme === 'dark') {
             $('body').removeClass('light-mode').addClass('dark-mode');
+            $('#dark-mode-icon').text('🌞');
             $('#toggleDarkMode').text('🌞');
-            $('#dark-mode-toggle').text('🌞');
         } else {
             $('body').removeClass('dark-mode').addClass('light-mode');
+            $('#dark-mode-icon').text('🌙');
             $('#toggleDarkMode').text('🌙');
-            $('#dark-mode-toggle').text('🌙');
         }
     }
 
@@ -17,7 +17,7 @@ $(document).ready(function() {
         localStorage.setItem('theme', currentMode);
     }
 
-    $('#toggleDarkMode, #dark-mode-toggle').click(function() {
+    $('#dark-mode-toggle, #toggleDarkMode').click(function() {
         const currentMode = $('body').hasClass('dark-mode') ? 'light' : 'dark';
         setTheme(currentMode);
         localStorage.setItem('theme', currentMode);
@@ -39,39 +39,4 @@ $(document).ready(function() {
     $('.close-modal').click(function() {
         $('#info-modal').fadeOut();
     });
-
-    // Inisialisasi Barba.js
-    Barba.init({
-        transitions: [{
-            name: 'fade',
-            leave(data) {
-                const done = this.async();
-                gsap.to(data.current.container, { opacity: 0, duration: 0.5, onComplete: done });
-            },
-            enter(data) {
-                gsap.from(data.next.container, { opacity: 0, duration: 0.5 });
-            }
-        }]
-    });
-
-    // Bind ulang semua event yang diperlukan setelah mengganti isi halaman
-    function bindEvents() {
-        $('#toggleDarkMode, #dark-mode-toggle').click(function() {
-            const currentMode = $('body').hasClass('dark-mode') ? 'light' : 'dark';
-            setTheme(currentMode);
-            localStorage.setItem('theme', currentMode);
-            syncTheme();
-        });
-
-        $('#info-button').click(function() {
-            $('#info-modal').fadeIn();
-        });
-
-        $('.close-modal').click(function() {
-            $('#info-modal').fadeOut();
-        });
-    }
-
-    // Panggil bindEvents untuk pertama kali
-    bindEvents();
 });
