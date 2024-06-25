@@ -97,15 +97,16 @@ footer {
 .dark-mode .card,
 .dark-mode .card-login,
 .dark-mode .sidebar,
+.dark-mode .form-admin,
 .dark-mode .menu-item {
     background-color: #1a202c; /* Warna latar belakang untuk mode dark */
 }
 
 .dark-mode h1,
+.dark-mode h2,
 .dark-mode h3,
 .dark-mode svg,
 .dark-mode footer,
-.dark-mode label,
 .dark-mode label,
 .dark-mode .sidebar {
     color: #f3f4f6; /* Warna teks untuk mode dark */
