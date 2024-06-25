@@ -1,14 +1,12 @@
-/* portfolio-style.css */
-
-/* Default light mode styles */
 body {
     background-color: #ffffff;
-    font-family: 'Tilt Neon', sans-serif;
+    font-family: "Tilt Neon", sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
 
-header, footer {
-    background-color: #f3f4f6;
+header,
+footer {
+    background-color: #f3f4f6; /* Warna latar belakang default untuk mode light */
 }
 
 .card {
@@ -90,16 +88,27 @@ header, footer {
 
 /* Dark mode styles */
 .dark-mode {
-    background-color: #2d3748;
+    background-color: #2d3748; /* Warna latar belakang untuk mode dark */
     color: #a0aec0;
 }
 
-.dark-mode header, .dark-mode footer, .dark-mode .card, .dark-mode .card-login {
-    background-color: #1a202c;
+.dark-mode header,
+.dark-mode footer,
+.dark-mode .card,
+.dark-mode .card-login,
+.dark-mode .sidebar,
+.dark-mode .menu-item {
+    background-color: #1a202c; /* Warna latar belakang untuk mode dark */
 }
 
-.dark-mode h1, .dark-mode footer, .dark-mode label, .dark-mode h2{
-    color: #f3f4f6;
+.dark-mode h1,
+.dark-mode h3,
+.dark-mode svg,
+.dark-mode footer,
+.dark-mode label,
+.dark-mode label,
+.dark-mode .sidebar {
+    color: #f3f4f6; /* Warna teks untuk mode dark */
 }
 
 .dark-mode .info-modal {
@@ -107,14 +116,30 @@ header, footer {
 }
 
 .dark-mode .info-content {
-    background-color: #1a202c;
-    color: #a0aec0;
+    background-color: #1a202c; /* Warna latar belakang untuk mode dark */
+    color: #a0aec0; /* Warna teks untuk mode dark */
 }
 
 .info-buttons.dark-mode a {
-    background-color: #718096;
+    background-color: #718096; /* Warna tombol untuk mode dark */
 }
 
 .info-buttons.dark-mode a:hover {
-    background-color: #4a5568;
+    background-color: #4a5568; /* Warna hover tombol untuk mode dark */
+}
+
+/* CSS yang sudah ada sebelumnya */
+
+.menu-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Animasi tambahan jika diperlukan */
+.menu-item:hover .text-lg {
+    transform: scale(1.1);
 }

@@ -2,11 +2,9 @@ $(document).ready(function() {
     function setTheme(theme) {
         if (theme === 'dark') {
             $('body').removeClass('light-mode').addClass('dark-mode');
-            $('#dark-mode-icon').text('🌞');
             $('#toggleDarkMode').text('🌞');
         } else {
             $('body').removeClass('dark-mode').addClass('light-mode');
-            $('#dark-mode-icon').text('🌙');
             $('#toggleDarkMode').text('🌙');
         }
     }
@@ -17,7 +15,7 @@ $(document).ready(function() {
         localStorage.setItem('theme', currentMode);
     }
 
-    $('#dark-mode-toggle, #toggleDarkMode').click(function() {
+    $('#toggleDarkMode').click(function() {
         const currentMode = $('body').hasClass('dark-mode') ? 'light' : 'dark';
         setTheme(currentMode);
         localStorage.setItem('theme', currentMode);
@@ -38,5 +36,14 @@ $(document).ready(function() {
 
     $('.close-modal').click(function() {
         $('#info-modal').fadeOut();
+    });
+
+    $(document).ready(function() {
+        // Toggle sidebar hide/show
+        $('#sidebar-toggle').click(function() {
+            $('#sidebar').toggleClass('sidebar-expanded sidebar-collapsed');
+            $('#main-header').toggleClass('header-expanded header-collapsed');
+            $('#main-content').toggleClass('content-expanded content-collapsed');
+        });
     });
 });
