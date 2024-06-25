@@ -40,7 +40,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    // Contoh data admin
+    // Contoh data adminn
     const admins = [
         { name: "John Doe", email: "john@example.com", role: "Admin" },
         { name: "Jane Smith", email: "jane@example.com", role: "Super Admin" }
