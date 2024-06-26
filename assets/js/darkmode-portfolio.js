@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // Dark Mode Functions
     function setTheme(theme) {
         if (theme === 'dark') {
             $('body').removeClass('light-mode').addClass('dark-mode');
@@ -37,17 +38,14 @@ $(document).ready(function() {
     $('.close-modal').click(function() {
         $('#info-modal').fadeOut();
     });
-});
 
-$(document).ready(function() {
-    // Contoh data adminn
+    // Admin Management Functions
     const admins = [
         { name: "John Doe", email: "john@example.com", role: "Admin" },
         { name: "Jane Smith", email: "jane@example.com", role: "Super Admin" }
     ];
 
-    // Contoh log aktivitas
-    const activityLogs = [
+    const adminActivityLogs = [
         { date: "2024-06-25", admin: "John Doe", activity: "Login" },
         { date: "2024-06-24", admin: "Jane Smith", activity: "Menghapus pengguna" }
     ];
@@ -58,12 +56,12 @@ $(document).ready(function() {
         admins.forEach((admin, index) => {
             const adminRow = `
                 <tr>
-                    <td class="py-2 px-4 border-b">${admin.name}</td>
-                    <td class="py-2 px-4 border-b">${admin.email}</td>
-                    <td class="py-2 px-4 border-b">${admin.role}</td>
-                    <td class="py-2 px-4 border-b">
+                    <td class="py-4 px-6 whitespace-nowrap">${admin.name}</td>
+                    <td class="py-4 px-6 whitespace-nowrap">${admin.email}</td>
+                    <td class="py-4 px-6 whitespace-nowrap">${admin.role}</td>
+                    <td class="py-4 px-6 whitespace-nowrap">
                         <button class="bg-yellow-500 text-white py-1 px-3 rounded-md mr-2 mb-1">Edit</button>
-                        <button class="bg-red-500 text-white py-1 px-3 rounded-md" onclick="confirmDelete(${index})">Hapus</button>
+                        <button class="bg-red-500 text-white py-1 px-3 rounded-md" onclick="confirmDeleteAdmin(${index})">Hapus</button>
                     </td>
                 </tr>
             `;
@@ -71,22 +69,21 @@ $(document).ready(function() {
         });
     }
 
-    function loadActivityLog() {
+    function loadAdminActivityLog() {
         const activityLog = $('#activity-log');
         activityLog.empty();
-        activityLogs.forEach(log => {
+        adminActivityLogs.forEach(log => {
             const logRow = `
                 <tr>
-                    <td class="py-2 px-4 border-b">${log.date}</td>
-                    <td class="py-2 px-4 border-b">${log.admin}</td>
-                    <td class="py-2 px-4 border-b">${log.activity}</td>
+                    <td class="py-4 px-6 whitespace-nowrap">${log.date}</td>
+                    <td class="py-4 px-6 whitespace-nowrap">${log.admin}</td>
+                    <td class="py-4 px-6 whitespace-nowrap">${log.activity}</td>
                 </tr>
             `;
             activityLog.append(logRow);
         });
     }
 
-    // Fungsi untuk menambah admin baru
     $('#add-admin-form').submit(function(event) {
         event.preventDefault();
         const name = $('#name').val();
@@ -97,9 +94,8 @@ $(document).ready(function() {
         this.reset();
     });
 
-    // Fungsi untuk mengonfirmasi penghapusan admin
     let adminIndexToDelete = -1;
-    window.confirmDelete = function(index) {
+    window.confirmDeleteAdmin = function(index) {
         adminIndexToDelete = index;
         $('#delete-modal').removeClass('hidden');
     };
@@ -118,7 +114,77 @@ $(document).ready(function() {
         }
     });
 
-    // Memuat daftar admin dan log aktivitas saat halaman siap
     loadAdminList();
-    loadActivityLog();
+    loadAdminActivityLog();
+
+    // User Management Functions
+    const users = [
+        { name: "Alice", email: "alice@example.com", status: "active" },
+        { name: "Bob", email: "bob@example.com", status: "inactive" }
+    ];
+
+    const userActivityLogs = [
+        { date: "2024-06-25", user: "Alice", activity: "Login" },
+        { date: "2024-06-24", user: "Bob", activity: "Menambahkan pengguna baru" }
+    ];
+
+    function loadUserList() {
+        const userList = $('#user-list');
+        userList.empty();
+        users.forEach((user, index) => {
+            const userRow = `
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">${user.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${user.email}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${user.status === 'active' ? 'Aktif' : 'Tidak Aktif'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button class="bg-yellow-500 text-white py-1 px-3 rounded-md mr-2 mb-1">Edit</button>
+                        <button class="bg-red-500 text-white py-1 px-3 rounded-md" onclick="confirmDeleteUser(${index})">Hapus</button>
+                        <button class="bg-blue-500 text-white py-1 px-3 rounded-md" onclick="toggleStatus(${index})">${user.status === 'active' ? 'Deaktivasi' : 'Aktivasi'}</button>
+                    </td>
+                </tr>
+            `;
+            userList.append(userRow);
+        });
+    }
+
+    function loadUserActivityLog() {
+        const activityLog = $('#activity-log');
+        activityLog.empty();
+        userActivityLogs.forEach(log => {
+            const logRow = `
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">${log.date}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${log.user}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${log.activity}</td>
+                </tr>
+            `;
+            activityLog.append(logRow);
+        });
+    }
+
+    $('#add-user-form').submit(function(event) {
+        event.preventDefault();
+        const name = $('#name').val();
+        const email = $('#email').val();
+        const status = $('#status').val();
+        users.push({ name, email, status });
+        loadUserList();
+        this.reset();
+    });
+
+    window.confirmDeleteUser = function(index) {
+        if (confirm('Apakah Anda yakin ingin menghapus pengguna ini?')) {
+            users.splice(index, 1);
+            loadUserList();
+        }
+    };
+
+    window.toggleStatus = function(index) {
+        users[index].status = users[index].status === 'active' ? 'inactive' : 'active';
+        loadUserList();
+    };
+
+    loadUserList();
+    loadUserActivityLog();
 });

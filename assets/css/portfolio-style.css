@@ -1,3 +1,23 @@
+/* admin-dashboard.css */
+
+/* CSS untuk tabel yang bisa di-scroll secara horizontal pada layar kecil */
+@media (max-width: 768px) {
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto;
+    }
+
+    .overflow-x-auto::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .overflow-x-auto::-webkit-scrollbar-thumb {
+        background-color: rgba(107, 114, 128, 0.5);
+        border-radius: 4px;
+    }
+}
+
+/* Sisa gaya CSS yang sudah ada tetap sama */
 body {
     background-color: #ffffff;
     font-family: "Tilt Neon", sans-serif;
@@ -129,7 +149,7 @@ footer {
     background-color: #4a5568; /* Warna hover tombol untuk mode dark */
 }
 
-/* CSS yang sudah ada sebelumnyaa */
+/* CSS yang sudah ada sebelumnya */
 
 .menu-item {
     transition: transform 0.3s ease, box-shadow 0.3s ease;

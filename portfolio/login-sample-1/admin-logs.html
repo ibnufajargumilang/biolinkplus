@@ -34,17 +34,17 @@
         <h2 class="text-2xl font-semibold text-gray-800 mb-4">Log Aktivitas Admin</h2>
         
         <!-- Log Aktivitas Admin -->
-        <div class="mb-6">
-            <table class="text-gray-900 min-w-full bg-white border border-gray-200 rounded-md">
-                <thead>
+        <div class="overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200 text-gray-900">
+                <thead class="bg-gray-50">
                     <tr>
-                        <th class="py-2 px-4 border-b">Tanggal</th>
-                        <th class="py-2 px-4 border-b">Admin</th>
-                        <th class="py-2 px-4 border-b">Aktivitas</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Tanggal</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Admin</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Aktivitas</th>
                     </tr>
                 </thead>
-                <tbody id="activity-log" class="text-center">
-                    <!-- Additional logs will be loaded here -->
+                <tbody id="activity-log" class="bg-white divide-y divide-gray-200">
+                    <!-- Log aktivitas akan dimuat di sini -->
                 </tbody>
             </table>
         </div>
