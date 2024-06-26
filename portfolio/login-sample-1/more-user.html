@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - More Users</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="../../assets/css/portfolio-style.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard - More Users</title>
+        <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+        <link href="../../assets/css/portfolio-style.css" rel="stylesheet" />
+    </head>
+    <body class="bg-gray-100">
+        <!-- Header -->
+        <header class="bg-white shadow-md dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+                <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Your App Name</h1>
+                <div class="flex items-center space-x-4">
+                    <a href="kelola-user.html" target="_self" title="back" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
+                        <span>⬅️</span>
+                    </a>
+                    <a href="./" target="_self" title="logout" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
+                        <span>🔒</span>
+                    </a>
+                    <button id="toggleDarkMode" title="dark mode" class="bg-gray-300 text-white p-2 py-1 rounded">
+                        <span>🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
 
-<!-- Header -->
-<header class="bg-white shadow-md dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-        <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Your App Name</h1>
-        <div class="flex items-center space-x-4">
-            <a href="kelola-user.html" target="_self" title="back" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
-                <span>⬅️</span>
-            </a>
-            <a href="./" target="_self" title="logout" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
-                <span>🔒</span>
-            </a>
-            <button id="toggleDarkMode" title="dark mode" class="bg-gray-300 text-white p-2 py-1 rounded">
-                <span>🌙</span>
-            </button>
-        </div>
-    </div>
-</header>
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="form-admin bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Daftar Pengguna</h2>
 
-<!-- Main Content -->
-<main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <div class="form-admin bg-white rounded-lg shadow-lg p-6">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Daftar Pengguna</h2>
-        
-        <!-- Daftar Pengguna -->
-        <div class="overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table class="min-w-full divide-y divide-gray-200 text-gray-900">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Nama</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Email</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Status</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody id="user-list" class="bg-white divide-y divide-gray-200 text-gray-900">
-                    <!-- Daftar pengguna akan dimuat di sini -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-</main>
+                <!-- Daftar Pengguna -->
+                <div class="overflow-x-auto shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200 text-gray-900">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Nama</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-list" class="bg-white divide-y divide-gray-200 text-gray-900">
+                            <!-- Daftar pengguna akan dimuat di sini -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
 
-<!-- Modal Konfirmasi Hapus -->
-<div id="delete-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
-    <div class="rounded-lg overflow-hidden shadow-xl transform transition-all max-w-sm w-full">
-        <div class="form-admin bg-white p-6">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Hapus Admin</h3>
-            <div class="mt-2">
-                <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus admin ini? Tindakan ini tidak dapat diurungkan.</p>
+        <!-- Modal Konfirmasi Hapus -->
+        <div id="delete-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+            <div class="rounded-lg overflow-hidden shadow-xl transform transition-all max-w-sm w-full">
+                <div class="form-admin bg-white p-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Hapus Pengguna</h3>
+                    <div class="mt-2">
+                        <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus pengguna ini? Tindakan ini tidak dapat diurungkan.</p>
+                    </div>
+                </div>
+                <div class="form-admin bg-white px-4 pb-3 flex justify-end space-x-2">
+                    <button id="cancel-delete" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md">Batal</button>
+                    <button id="confirm-delete" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md">Hapus</button>
+                </div>
             </div>
         </div>
-        <div class="form-admin bg-white px-4 pb-3 flex justify-end space-x-2">
-            <button id="cancel-delete" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md">Batal</button>
-            <button id="confirm-delete" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md">Hapus</button>
-        </div>
-    </div>
-</div>
 
-<!-- Footer -->
-<footer class="bg-white shadow-md dark:bg-gray-900 footer">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <p class="text-sm text-gray-600 dark:text-gray-100 text-center">&copy; 2024 Your App. All rights reserved.</p>
-    </div>
-</footer>
+        <!-- Footer -->
+        <footer class="bg-white shadow-md dark:bg-gray-900 footer">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <p class="text-sm text-gray-600 dark:text-gray-100 text-center">&copy; 2024 Your App. All rights reserved.</p>
+            </div>
+        </footer>
 
-<!-- Script JavaScript untuk Dark Mode -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../../assets/js/darkmode-portfolio.js"></script>
-</body>
+        <!-- Script JavaScript untuk Dark Mode -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../../assets/js/darkmode-portfolio.js"></script>
+    </body>
 </html>

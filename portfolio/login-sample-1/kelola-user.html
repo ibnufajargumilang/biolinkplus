@@ -99,6 +99,22 @@
             </div>
         </main>
 
+        <!-- Modal Konfirmasi Hapus -->
+        <div id="delete-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+            <div class="rounded-lg overflow-hidden shadow-xl transform transition-all max-w-sm w-full">
+                <div class="form-admin bg-white p-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Hapus Pengguna</h3>
+                    <div class="mt-2">
+                        <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus pengguna ini? Tindakan ini tidak dapat diurungkan.</p>
+                    </div>
+                </div>
+                <div class="form-admin bg-white px-4 pb-3 flex justify-end space-x-2">
+                    <button id="cancel-delete" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md">Batal</button>
+                    <button id="confirm-delete" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-md">Hapus</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Footer -->
         <footer class="bg-white shadow-md dark:bg-gray-900 footer">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

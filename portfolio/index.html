@@ -1,79 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="icon" href="../assets/img/logo.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&amp;display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/portfolio-style.css">
-</head>
-<body class="bg-white text-gray-900">
-    <!-- Header -->
-    <header class="bg-f3f4f6 text-gray-900 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold">My Portfolio</h1>
-            <div class="flex items-center space-x-4">
-                <a href="../" target="_self" title="home" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
-                    <span>🏠</span>
-                </a>
-                <button id="info-button" title="guide" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
-                    <span id="info-icon">📖</span>
-                </button>
-                <button id="toggleDarkMode" title="dark mode" class="bg-gray-300 text-white p-2 py-1 rounded">
-                    🌙
-                </button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio</title>
+        <link rel="icon" href="../assets/img/logo.ico" type="image/x-icon" />
+        <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&amp;display=swap" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="../assets/css/portfolio-style.css" />
+    </head>
+    <body class="bg-white text-gray-900">
+        <!-- Header -->
+        <header class="bg-f3f4f6 text-gray-900 p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-xl font-bold">My Portfolio</h1>
+                <div class="flex items-center space-x-4">
+                    <a href="../" target="_self" title="home" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
+                        <span>🏠</span>
+                    </a>
+                    <button id="info-button" title="guide" class="bg-gray-300 text-gray-900 p-2 py-1 rounded">
+                        <span id="info-icon">📖</span>
+                    </button>
+                    <button id="toggleDarkMode" title="dark mode" class="bg-gray-300 text-white p-2 py-1 rounded">🌙</button>
+                </div>
             </div>
-        </div>
-    </header>
-    
-    <!-- Main Content -->
-    <main class="container mx-auto my-8">
-        <div class="flex flex-wrap justify-center">
-            <!-- Card 1 -->
-            <div class="card max-w-sm rounded overflow-hidden shadow-lg m-4">
-                <a href="login-sample-1" target="_self">
-                    <img class="w-full" src="../assets/img/login-sample.jpg" alt="Project Image">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Page Login Sample</div>
-                        <p class="text-gray-700 text-base">Create By ChatGPT using Tailwind CSS.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="card max-w-sm rounded overflow-hidden shadow-lg m-4">
-                <a href="login-sample-1/dashboard.html" target="_self">
-                    <img class="w-full" src="../assets/img/dashboard-sample.jpg" alt="Project Image">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Page Dashboard Sample</div>
-                        <p class="text-gray-700 text-base">Create By ChatGPT using Tailwind CSS.</p>
-                    </div>
-                </a>
-            </div>
-            <!-- Add more cards as needed -->
-        </div>
-    </main>
+        </header>
 
-    <!-- Info Modal -->
-    <div id="info-modal" class="info-modal">
-        <div class="info-content">
-            <span class="close-modal">&times;</span>
-            <h2>Guide</h2>
-            <p>This landing page was created using AI ChatGPT.</p>
-            <div class="info-buttons">
-                <a href="https://chatgpt.com/share/7fe36bd2-03c1-4996-a841-9e6f7577b6d8" target="_blank">Learn more</a>
+        <!-- Main Content -->
+        <main class="container mx-auto my-8">
+            <div class="flex flex-wrap justify-center">
+                <!-- Card 1 -->
+                <div class="card max-w-sm rounded overflow-hidden shadow-lg m-4">
+                    <a href="login-sample-1" target="_self">
+                        <img class="w-full" src="../assets/img/login-sample.jpg" alt="Project Image" />
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Page Login Sample</div>
+                            <p class="text-gray-700 text-base">Create By ChatGPT using Tailwind CSS.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card max-w-sm rounded overflow-hidden shadow-lg m-4">
+                    <a href="login-sample-1/dashboard.html" target="_self">
+                        <img class="w-full" src="../assets/img/dashboard-sample.jpg" alt="Project Image" />
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">Page Dashboard Sample</div>
+                            <p class="text-gray-700 text-base">Create By ChatGPT using Tailwind CSS.</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Add more cards as needed -->
+            </div>
+        </main>
+
+        <!-- Info Modal -->
+        <div id="info-modal" class="info-modal">
+            <div class="info-content">
+                <span class="close-modal">&times;</span>
+                <h2>Guide</h2>
+                <p>This landing page was created using AI ChatGPT.</p>
+                <div class="info-buttons">
+                    <a href="https://chatgpt.com/share/7fe36bd2-03c1-4996-a841-9e6f7577b6d8" target="_blank">Learn more</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="bg-f3f4f6 text-gray-900 p-4">
-        <div class="container mx-auto text-center">
-            &copy; 2024 Ibnu Fajar Gumilang. Created by <a href="https://chatgpt.com/c/5b79eb5d-283d-4f07-a053-ea883d70fe8d">ChatGPT</a>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer class="bg-f3f4f6 text-gray-900 p-4">
+            <div class="container mx-auto text-center">&copy; 2024 Ibnu Fajar Gumilang. Created by <a href="https://chatgpt.com/c/5b79eb5d-283d-4f07-a053-ea883d70fe8d">ChatGPT</a></div>
+        </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../assets/js/darkmode-portfolio.js"></script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../assets/js/darkmode-portfolio.js"></script>
+    </body>
 </html>

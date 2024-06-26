@@ -1,57 +1,57 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Dark Mode Functions
     function setTheme(theme) {
-        if (theme === 'dark') {
-            $('body').removeClass('light-mode').addClass('dark-mode');
-            $('#toggleDarkMode').text('🌞');
+        if (theme === "dark") {
+            $("body").removeClass("light-mode").addClass("dark-mode");
+            $("#toggleDarkMode").text("🌞");
         } else {
-            $('body').removeClass('dark-mode').addClass('light-mode');
-            $('#toggleDarkMode').text('🌙');
+            $("body").removeClass("dark-mode").addClass("light-mode");
+            $("#toggleDarkMode").text("🌙");
         }
     }
 
     function syncTheme() {
-        const currentMode = $('body').hasClass('dark-mode') ? 'dark' : 'light';
+        const currentMode = $("body").hasClass("dark-mode") ? "dark" : "light";
         setTheme(currentMode);
-        localStorage.setItem('theme', currentMode);
+        localStorage.setItem("theme", currentMode);
     }
 
-    $('#toggleDarkMode').click(function() {
-        const currentMode = $('body').hasClass('dark-mode') ? 'light' : 'dark';
+    $("#toggleDarkMode").click(function () {
+        const currentMode = $("body").hasClass("dark-mode") ? "light" : "dark";
         setTheme(currentMode);
-        localStorage.setItem('theme', currentMode);
+        localStorage.setItem("theme", currentMode);
         syncTheme();
     });
 
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
         setTheme(savedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-        localStorage.setItem('theme', 'dark');
+    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setTheme("dark");
+        localStorage.setItem("theme", "dark");
     }
 
-    $('#info-button').click(function() {
-        $('#info-modal').fadeIn();
+    $("#info-button").click(function () {
+        $("#info-modal").fadeIn();
     });
 
-    $('.close-modal').click(function() {
-        $('#info-modal').fadeOut();
+    $(".close-modal").click(function () {
+        $("#info-modal").fadeOut();
     });
 
     // Admin Management Functions
     const admins = [
         { name: "John Doe", email: "john@example.com", role: "Admin" },
-        { name: "Jane Smith", email: "jane@example.com", role: "Super Admin" }
+        { name: "Jane Smith", email: "jane@example.com", role: "Super Admin" },
     ];
 
     const adminActivityLogs = [
         { date: "2024-06-25", admin: "John Doe", activity: "Login" },
-        { date: "2024-06-24", admin: "Jane Smith", activity: "Menghapus pengguna" }
+        { date: "2024-06-24", admin: "Jane Smith", activity: "Menghapus pengguna" },
     ];
 
     function loadAdminList() {
-        const adminList = $('#admin-list');
+        const adminList = $("#admin-list");
         adminList.empty();
         admins.forEach((admin, index) => {
             const adminRow = `
@@ -60,7 +60,7 @@ $(document).ready(function() {
                     <td class="py-4 px-6 whitespace-nowrap">${admin.email}</td>
                     <td class="py-4 px-6 whitespace-nowrap">${admin.role}</td>
                     <td class="py-4 px-6 whitespace-nowrap">
-                        <button class="bg-yellow-500 text-white py-1 px-3 rounded-md mr-2 mb-1">Edit</button>
+                        <button class="bg-yellow-500 text-white py-1 px-3 rounded-md mb-1">Edit</button>
                         <button class="bg-red-500 text-white py-1 px-3 rounded-md" onclick="confirmDeleteAdmin(${index})">Hapus</button>
                     </td>
                 </tr>
@@ -70,9 +70,9 @@ $(document).ready(function() {
     }
 
     function loadAdminActivityLog() {
-        const activityLog = $('#activity-log');
+        const activityLog = $("#activity-log");
         activityLog.empty();
-        adminActivityLogs.forEach(log => {
+        adminActivityLogs.forEach((log) => {
             const logRow = `
                 <tr>
                     <td class="py-4 px-6 whitespace-nowrap">${log.date}</td>
@@ -84,32 +84,32 @@ $(document).ready(function() {
         });
     }
 
-    $('#add-admin-form').submit(function(event) {
+    $("#add-admin-form").submit(function (event) {
         event.preventDefault();
-        const name = $('#name').val();
-        const email = $('#email').val();
-        const role = $('#role').val();
+        const name = $("#name").val();
+        const email = $("#email").val();
+        const role = $("#role").val();
         admins.push({ name, email, role });
         loadAdminList();
         this.reset();
     });
 
     let adminIndexToDelete = -1;
-    window.confirmDeleteAdmin = function(index) {
+    window.confirmDeleteAdmin = function (index) {
         adminIndexToDelete = index;
-        $('#delete-modal').removeClass('hidden');
+        $("#delete-modal").removeClass("hidden");
     };
 
-    $('#cancel-delete').click(function() {
-        $('#delete-modal').addClass('hidden');
+    $("#cancel-delete").click(function () {
+        $("#delete-modal").addClass("hidden");
         adminIndexToDelete = -1;
     });
 
-    $('#confirm-delete').click(function() {
+    $("#confirm-delete").click(function () {
         if (adminIndexToDelete > -1) {
             admins.splice(adminIndexToDelete, 1);
             loadAdminList();
-            $('#delete-modal').addClass('hidden');
+            $("#delete-modal").addClass("hidden");
             adminIndexToDelete = -1;
         }
     });
@@ -120,27 +120,27 @@ $(document).ready(function() {
     // User Management Functions
     const users = [
         { name: "Alice", email: "alice@example.com", status: "active" },
-        { name: "Bob", email: "bob@example.com", status: "inactive" }
+        { name: "Bob", email: "bob@example.com", status: "inactive" },
     ];
 
     const userActivityLogs = [
         { date: "2024-06-25", user: "Alice", activity: "Login" },
-        { date: "2024-06-24", user: "Bob", activity: "Menambahkan pengguna baru" }
+        { date: "2024-06-24", user: "Bob", activity: "Menambahkan pengguna baru" },
     ];
 
     function loadUserList() {
-        const userList = $('#user-list');
+        const userList = $("#user-list");
         userList.empty();
         users.forEach((user, index) => {
             const userRow = `
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">${user.name}</td>
                     <td class="px-6 py-4 whitespace-nowrap">${user.email}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">${user.status === 'active' ? 'Aktif' : 'Tidak Aktif'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${user.status === "active" ? "Aktif" : "Tidak Aktif"}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <button class="bg-yellow-500 text-white py-1 px-3 rounded-md mr-2 mb-1">Edit</button>
+                        <button class="bg-yellow-500 text-white py-1 px-3 rounded-md mb-1">Edit</button>
                         <button class="bg-red-500 text-white py-1 px-3 rounded-md" onclick="confirmDeleteUser(${index})">Hapus</button>
-                        <button class="bg-blue-500 text-white py-1 px-3 rounded-md" onclick="toggleStatus(${index})">${user.status === 'active' ? 'Deaktivasi' : 'Aktivasi'}</button>
+                        <button class="bg-blue-500 text-white py-1 px-3 rounded-md" onclick="toggleStatus(${index})">${user.status === "active" ? "Deaktivasi" : "Aktivasi"}</button>
                     </td>
                 </tr>
             `;
@@ -149,9 +149,9 @@ $(document).ready(function() {
     }
 
     function loadUserActivityLog() {
-        const activityLog = $('#activity-log');
+        const activityLog = $("#activity-log");
         activityLog.empty();
-        userActivityLogs.forEach(log => {
+        userActivityLogs.forEach((log) => {
             const logRow = `
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">${log.date}</td>
@@ -163,25 +163,38 @@ $(document).ready(function() {
         });
     }
 
-    $('#add-user-form').submit(function(event) {
+    $("#add-user-form").submit(function (event) {
         event.preventDefault();
-        const name = $('#name').val();
-        const email = $('#email').val();
-        const status = $('#status').val();
+        const name = $("#name").val();
+        const email = $("#email").val();
+        const status = $("#status").val();
         users.push({ name, email, status });
         loadUserList();
         this.reset();
     });
 
-    window.confirmDeleteUser = function(index) {
-        if (confirm('Apakah Anda yakin ingin menghapus pengguna ini?')) {
-            users.splice(index, 1);
-            loadUserList();
-        }
+    let userIndexToDelete = -1;
+    window.confirmDeleteUser = function (index) {
+        userIndexToDelete = index;
+        $("#delete-modal").removeClass("hidden");
     };
 
-    window.toggleStatus = function(index) {
-        users[index].status = users[index].status === 'active' ? 'inactive' : 'active';
+    $("#cancel-delete").click(function () {
+        $("#delete-modal").addClass("hidden");
+        userIndexToDelete = -1;
+    });
+
+    $("#confirm-delete").click(function () {
+        if (userIndexToDelete > -1) {
+            users.splice(userIndexToDelete, 1);
+            loadUserList();
+            $("#delete-modal").addClass("hidden");
+            userIndexToDelete = -1;
+        }
+    });
+
+    window.toggleStatus = function (index) {
+        users[index].status = users[index].status === "active" ? "inactive" : "active";
         loadUserList();
     };
 

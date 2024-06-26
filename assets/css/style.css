@@ -1,14 +1,16 @@
 /* Global styles */
 body {
-    font-family: 'Tilt Neon', sans-serif;
+    font-family: "Tilt Neon", sans-serif;
     transition: background-color 0.3s, color 0.3s;
 }
 
-.link-card, .social-icon {
+.link-card,
+.social-icon {
     transition: transform 0.3s ease-in-out, background-color 0.3s, color 0.3s;
 }
 
-.link-card:hover, .social-icon:hover {
+.link-card:hover,
+.social-icon:hover {
     transform: translateY(-5px);
 }
 
@@ -35,12 +37,14 @@ body {
     color: #ffffff;
 }
 
-.dark-mode .link-card, .dark-mode .social-icon {
+.dark-mode .link-card,
+.dark-mode .social-icon {
     background-color: #2d3748;
     color: #ffffff;
 }
 
-.dark-mode .link-card:hover, .dark-mode .social-icon:hover {
+.dark-mode .link-card:hover,
+.dark-mode .social-icon:hover {
     background-color: #4a5568;
 }
 
